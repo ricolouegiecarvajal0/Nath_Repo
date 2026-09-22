@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nathalie M. Amande — Portfolio</title>
+<meta name="description" content="Nathalie M. Amande, BSIT student at Eastern Samar State University — networking, web development, and IT.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #0B0F19;
+    --bg-panel: #10162A;
+    --card: #141A2B;
+    --border: #232B42;
+    --text: #F3F4F6;
+    --text-soft: #97A0B8;
+    --violet: #7C3AED;
+    --coral: #F43F5E;
+
+    --font-display: "Sora", "Segoe UI", sans-serif;
+    --font-body: "Inter", -apple-system, sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+    --spine-width: 240px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+  }
+
+  a { color: var(--violet); }
+  a:focus-visible, button:focus-visible, .tab:focus-visible {
+    outline: 2px solid var(--coral);
+    outline-offset: 3px;
+  }
+
+  .skip-link {
+    position: absolute; left: -999px; top: 0;
+    background: var(--violet); color: #fff;
+    padding: 0.75rem 1.25rem; z-index: 100;
+    font-family: var(--font-mono); font-size: 0.85rem;
+  }
+  .skip-link:focus { left: 1rem; top: 1rem; }
+
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.15; margin: 0; color: #fff; }
+
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.04em;
+    color: var(--coral);
+    display: block;
+    margin-bottom: 0.6rem;
+  }
+
+  /* ============ LAYOUT ============ */
+  .layout {
+    display: grid;
+    grid-template-columns: var(--spine-width) 1fr;
+    min-height: 100vh;
+  }
+
+  /* --- Sidebar: network-node nav, reflects Nathalie's networking focus --- */
+  .spine {
+    background: var(--bg-panel);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 0;
+  }
+
+  .node-rail {
+    position: absolute;
+    left: 22px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, var(--border) 10%, var(--border) 90%, transparent);
+  }
+
+  .spine-id {
+    padding: 0 1.5rem 1.75rem 3.25rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 1.25rem;
+    position: relative;
+  }
+  .spine-id::before {
+    content: "";
+    position: absolute;
+    left: 17px; top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--violet);
+    box-shadow: 0 0 10px 2px rgba(124, 58, 237, 0.65);
+  }
+  .avatar {
+    width: 64px; height: 64px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: #1a2138;
+    object-fit: cover;
+    display: block;
+    margin-bottom: 0.85rem;
+    color: var(--text-soft);
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+  }
+  .spine-id .name {
+    font-family: var(--font-display);
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: block;
+    color: #fff;
+  }
+  .spine-id .role {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-soft);
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  nav.index { padding-left: 3.25rem; padding-right: 1rem; display: flex; flex-direction: column; gap: 0.15rem; }
+  .tab {
+    position: relative;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--text-soft);
+    text-decoration: none;
+    padding: 0.6rem 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    border-radius: 4px;
+    transition: color 0.15s ease, background 0.15s ease;
+  }
+  .tab::before {
+    content: "";
+    position: absolute;
+    left: -1.05rem;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--bg-panel);
+    border: 2px solid var(--border);
+  }
+  .tab:hover { color: #fff; background: rgba(124, 58, 237, 0.12); }
+  .tab:hover::before { border-color: var(--violet); }
+
+  .spine-footer {
+    margin-top: auto;
+    padding: 1.5rem 1.5rem 0 3.25rem;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    color: var(--text-soft);
+  }
+
+  @media (max-width: 780px) {
+    .layout { grid-template-columns: 1fr; }
+    .spine {
+      position: static; height: auto; flex-direction: row;
+      align-items: center; padding: 1rem; overflow-x: auto;
+    }
+    .node-rail { display: none; }
+    .spine-id { border-bottom: none; border-right: 1px solid var(--border); padding: 0 1rem; margin: 0; flex-shrink: 0; }
+    .spine-id::before { display: none; }
+    .avatar { margin-bottom: 0.4rem; }
+    nav.index { flex-direction: row; padding: 0 0 0 1rem; }
+    .tab::before { display: none; }
+    .spine-footer { display: none; }
+  }
+
+  main { min-width: 0; }
+
+  section {
+    padding: 5rem 4rem;
+    border-bottom: 1px solid var(--border);
+    max-width: 880px;
+  }
+  @media (max-width: 780px) { section { padding: 3rem 1.5rem; } }
+
+  /* ============ HERO ============ */
+  .hero {
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: -120px; right: -140px;
+    width: 420px; height: 420px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.30), transparent 70%);
+    pointer-events: none;
+  }
+  .hero h1 { font-size: clamp(2.1rem, 4.6vw, 3.2rem); position: relative; }
+  .hero h1 .accent { color: var(--coral); }
+  .hero .tagline {
+    font-size: 1.08rem;
+    color: var(--text-soft);
+    max-width: 46ch;
+    margin-top: 1.1rem;
+    position: relative;
+  }
+  .hero-links {
+    display: flex; gap: 1.5rem; flex-wrap: wrap;
+    margin-top: 2rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    position: relative;
+  }
+  .hero-links a { color: var(--text); border-bottom: 1px solid var(--border); padding-bottom: 3px; text-decoration: none; }
+  .hero-links a:hover { color: var(--violet); border-color: var(--violet); }
+
+  /* ============ ABOUT ============ */
+  .about p { max-width: 65ch; color: var(--text-soft); }
+  .about p + p { margin-top: 1rem; }
+
+  /* ============ SKILLS ============ */
+  .skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin-top: 2rem; }
+  .skill-group h3 { font-size: 0.95rem; font-family: var(--font-mono); font-weight: 500; color: var(--coral); margin-bottom: 0.85rem; }
+  .skill-group ul { list-style: none; padding: 0; margin: 0; }
+  .skill-group li {
+    padding: 0.4rem 0.6rem;
+    margin-bottom: 0.4rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--violet);
+    border-radius: 4px;
+    font-size: 0.92rem;
+    color: var(--text);
+  }
+
+  /* ============ PROJECTS ============ */
+  .project-grid { display: grid; gap: 1.5rem; margin-top: 2rem; }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-top: 2px solid var(--violet);
+    border-radius: 6px;
+    padding: 1.75rem;
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 1.5rem;
+    transition: border-color 0.15s ease;
+  }
+  .project-card:hover { border-top-color: var(--coral); }
+  .project-card img {
+    width: 100%;
+    aspect-ratio: 4/3;
+    object-fit: cover;
+    border-radius: 4px;
+    background: #1a2138;
+    border: 1px dashed var(--border);
+  }
+  .project-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
+  .project-card .desc { color: var(--text-soft); font-size: 0.94rem; margin: 0 0 1rem; }
+  .tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .tag {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    color: var(--violet);
+    border: 1px solid var(--violet);
+    padding: 0.2rem 0.55rem;
+    border-radius: 20px;
+  }
+  .project-links { display: flex; gap: 1.25rem; font-family: var(--font-mono); font-size: 0.8rem; }
+  .project-links a { text-decoration: none; }
+  .project-links a:hover { color: var(--coral); }
+  @media (max-width: 600px) { .project-card { grid-template-columns: 1fr; } }
+
+  /* ============ CERTIFICATIONS + EDUCATION ============ */
+  .timeline-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin-top: 2.5rem; }
+  @media (max-width: 700px) { .timeline-columns { grid-template-columns: 1fr; gap: 2.5rem; } }
+  .col-title { font-family: var(--font-mono); font-size: 0.85rem; font-weight: 500; color: var(--text-soft); margin-bottom: 1.25rem; }
+  .timeline-item {
+    position: relative;
+    padding: 0 0 1.5rem 1.25rem;
+    border-left: 1px solid var(--border);
+    margin-left: 0.2rem;
+  }
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -5px; top: 3px;
+    width: 9px; height: 9px;
+    border-radius: 50%;
+    background: var(--violet);
+  }
+  .timeline-item:last-child { border-color: transparent; }
+  .timeline-item .when { font-family: var(--font-mono); font-size: 0.74rem; color: var(--coral); }
+  .timeline-item h3 { font-size: 1.02rem; margin-top: 0.3rem; }
+  .timeline-item .where { color: var(--text-soft); font-size: 0.88rem; margin-bottom: 0.35rem; }
+  .timeline-item p { color: var(--text-soft); font-size: 0.9rem; max-width: 60ch; margin: 0; }
+
+  /* ============ CONTACT / FOOTER ============ */
+  .contact { border-bottom: none; }
+  .contact p { color: var(--text-soft); max-width: 50ch; }
+  .contact-methods { margin-top: 1.75rem; display: flex; flex-direction: column; gap: 0.7rem; font-family: var(--font-mono); font-size: 0.92rem; }
+  .contact-methods a { text-decoration: none; }
+  .contact-methods a:hover { color: var(--coral); }
+  footer.sign-off { padding: 2rem 4rem 3rem; font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-soft); }
+  @media (max-width: 780px) { footer.sign-off { padding: 1.5rem; } }
+</style>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<div class="layout">
+
+  <header class="spine">
+    <div class="node-rail" aria-hidden="true"></div>
+
+    <div class="spine-id">
+      <!-- REPLACE with your own photo: <img class="avatar" src="your-photo.jpg" alt="Nathalie M. Amande"> -->
+      <div class="avatar" style="display:flex;align-items:center;justify-content:center;">photo</div>
+      <span class="name">Nathalie M. Amande</span>
+      <span class="role">BSIT · 3rd Year · ESSU</span>
+    </div>
+
+    <nav class="index" aria-label="Section navigation">
+      <a class="tab" href="#about">About</a>
+      <a class="tab" href="#skills">Skills</a>
+      <a class="tab" href="#projects">Projects</a>
+      <a class="tab" href="#certs">Certifications &amp; Education</a>
+      <a class="tab" href="#contact">Contact</a>
+    </nav>
+
+    <div class="spine-footer">
+      Eastern Samar State University
+    </div>
+  </header>
+
+  <main id="main">
+
+    <section class="hero" id="hero">
+      <span class="kicker">Portfolio</span>
+      <h1>Nathalie M. Amande.<br>Building things in <span class="accent">networks &amp; code</span>.</h1>
+      <p class="tagline">I'm a friendly IT student who is always willing to learn and try new things.</p>
+      <div class="hero-links">
+        <a href="mailto:nathalieamande@gmail.com">Email</a>
+        <a href="#">GitHub</a>
+      </div>
+    </section>
+
+    <section id="about">
+      <span class="kicker">About</span>
+      <h2>About me</h2>
+      <p>I am a 3rd year BSIT student at Eastern Samar State University, learning networking, web application development, and other areas of IT. I chose IT because I'm curious about how websites, applications, and computer systems actually work under the hood.</p>
+      <p>Outside of school and IT, I enjoy playing volleyball, watching movies and series, listening to music, and playing games — and spending time with family and friends whenever I get the chance. These help me relax and come back to schoolwork with a clear head.</p>
+      <p>Right now I'm hoping to gain more hands-on IT experience, especially through an internship or part-time work — a chance to apply what I've learned in school, sharpen my skills, and grow through real-world projects.</p>
+    </section>
+
+    <section id="skills">
+      <span class="kicker">Skills</span>
+      <h2>Skills</h2>
+      <div class="skill-groups">
+
+        <div class="skill-group">
+          <h3>Languages</h3>
+          <ul>
+            <li>HTML</li>
+            <li>JavaScript</li>
+            <li>SQL</li>
+            <li>C++ (Arduino)</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3>Tools</h3>
+          <ul>
+            <li>Visual Studio Code</li>
+            <li>MySQL</li>
+            <li>CodeIgniter 4</li>
+            <li>Git / GitHub</li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="projects">
+      <span class="kicker">Projects</span>
+      <h2>Projects</h2>
+      <div class="project-grid">
+
+        <article class="project-card">
+          <!-- REPLACE with your own screenshot: <img src="bookstore-catalog.jpg" alt="Bookstore Catalog screenshot"> -->
+          <img src="" alt="Bookstore Catalog screenshot — add your own image here">
+          <div>
+            <h3>Bookstore Catalog</h3>
+            <p class="desc">A full-stack, database-driven web application built with PHP and Laravel Herd. Designed around the Model-View-Controller (MVC) architecture, it provides a clean platform to showcase and manage a collection of books.</p>
+            <div class="tags">
+              <span class="tag">PHP</span>
+              <span class="tag">Laravel Herd</span>
+              <span class="tag">MVC</span>
+              <span class="tag">MySQL</span>
+            </div>
+            <div class="project-links">
+              <a href="#">Live demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <!-- REPLACE with your own screenshot: <img src="task-management.jpg" alt="Task Management System screenshot"> -->
+          <img src="" alt="Task Management System screenshot — add your own image here">
+          <div>
+            <h3>Task Management System</h3>
+            <p class="desc">A web app for organizing day-to-day work: users can create, read, update, and delete tasks, and track each one through a status — like To Do, In Progress, and Done — so nothing gets lost between the cracks.</p>
+            <div class="tags">
+              <span class="tag">CRUD</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">CodeIgniter 4</span>
+            </div>
+            <div class="project-links">
+              <a href="#">Live demo</a>
+              <a href="#">Source</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="certs">
+      <span class="kicker">Certifications &amp; Education</span>
+      <h2>Certifications &amp; Education</h2>
+      <div class="timeline-columns">
+
+        <div class="timeline-column">
+          <h3 class="col-title">Certifications</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="when">Cisco Networking Academy</span>
+              <h3>Networking Basics</h3>
+              <div class="where">Cisco NetAcad</div>
+              <!-- REPLACE with your own certificate link: <p><a href="networking-basics-cert.pdf">View certificate (PDF)</a></p> -->
+              <p><a href="#">View certificate (PDF)</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-column">
+          <h3 class="col-title">Education</h3>
+          <div class="timeline">
+            <div class="timeline-item">
+              <span class="when">2026 — 2027 (current)</span>
+              <h3>BS Information Technology</h3>
+              <div class="where">Eastern Samar State University — 3rd year</div>
+            </div>
+            <div class="timeline-item">
+              <span class="when">2025 — 2026</span>
+              <h3>BS Information Technology</h3>
+              <div class="where">Eastern Samar State University — 2nd year</div>
+            </div>
+            <div class="timeline-item">
+              <span class="when">2024 — 2025</span>
+              <h3>BS Information Technology</h3>
+              <div class="where">Eastern Samar State University — 1st year</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <span class="kicker">Contact</span>
+      <h2>Get in touch</h2>
+      <p>Open to internship and part-time opportunities in IT. Feel free to reach out any time — I'd love to hear from you.</p>
+      <div class="contact-methods">
+        <a href="mailto:nathalieamande@gmail.com">nathalieamande@gmail.com</a>
+        <a href="tel:09357366110">0935 736 6110</a>
+      </div>
+    </section>
+
+    <footer class="sign-off">
+      © <span id="year"></span> Nathalie M. Amande. All rights reserved.
+    </footer>
+
+  </main>
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
